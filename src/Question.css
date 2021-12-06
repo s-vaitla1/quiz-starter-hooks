@@ -1,0 +1,24 @@
+.answer-button {
+    display: inline-block;
+    font-size: 15px;
+    height: 30px;
+    width: 70%;
+    margin: 10px;
+}
+
+.question {
+    font-size: 20px;
+    margin: 20px;
+}
+
+.answers {
+    margin:10px;
+}
+
+.answer-button:hover {
+    background-color: lightblue;
+}
+
+.answer-button:active {
+    background-color: lightblue;
+}
