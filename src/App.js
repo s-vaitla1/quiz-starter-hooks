@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import questions from './api/multipleChoice.json';
 import Question from "./Question.jsx"
@@ -10,14 +9,15 @@ function App() {
   const totalQuestions = fetchData.length;
 
   const [questionId, setQuestionId] = useState(1);
-  const correctAnswers = [];
 
   const display = fetchData.find(i => i.questionID === questionId)
 
-  function storeCorrectAnswers() {
+  function correctAnswers() {
+    let foo = []
     for (var i = 0; i < totalQuestions; i++) {
-      correctAnswers.push([fetchData[i].correctAnswerID])
+      foo.push(fetchData[i].correctAnswerID)
     }
+    return foo
   }
 
   function onNext() {
@@ -28,18 +28,17 @@ function App() {
     setQuestionId(questionId - 1)
   }
 
-  
-
+  // console.log(correctAnswers())
+  // console.log(questionFunc)
+  //console.log(Question.handleScore())
   return (
     <div className="App">
       <h1> Welcome to a random quiz </h1>
-      <p> Question {display.questionID} of {totalQuestions} </p>
       <div className="Question">
-        <Question questionId={display.questionID} question={display.question} subQuestion={display.subQuestion} answers={display.answers} correctAnswer={storeCorrectAnswers} />
+        <Question questionId={display.questionID} question={display.question} subQuestion={display.subQuestion} answers={display.answers} correctAnswers={correctAnswers} totalQ={totalQuestions} />
       </div>
       <button onClick={() => onPrev()} disabled={questionId === 1} className="quiz-buttons">Prev</button>
-      <button onClick={() => onNext()} disabled={questionId === totalQuestions + 1} className="quiz-buttons">Next</button>
-      {questionId === 5 ? <button>Submit</button> : null}
+      <button onClick={() => onNext()} disabled={questionId === totalQuestions} className="quiz-buttons">Next</button>
     </div>
   );
 }

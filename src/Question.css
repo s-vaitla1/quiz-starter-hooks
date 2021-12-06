@@ -19,6 +19,6 @@
     background-color: lightblue;
 }
 
-.answer-button:active {
-    background-color: lightblue;
-}
+/* .answer-button:focus {
+    background-color: cyan;
+} */
