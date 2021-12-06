@@ -5,5 +5,3 @@ A user is taken through a series of multiple choice questions and being assessed
 - Data is provide in API folder
 
 
-Good Luck!
-
