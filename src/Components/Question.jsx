@@ -1,12 +1,14 @@
 import "./Question.css";
 import { useState } from "react";
 
-export default function Question({questionId, question, subQuestion, answers, correctAnswers, totalQ}) {
-    
-  const [playerAnswers, setPlayerAnswers] = useState([{ qId: " ", userAnswer: " "},]);
+export default function Question({ questionId, question, subQuestion, answers, correctAnswers, totalQ }) {
+  const [playerAnswers, setPlayerAnswers] = useState([
+    { qId: " ", userAnswer: " " },
+  ]);
   const [showResults, setShowResults] = useState(false);
 
   const questions = [];
+
   function handleOnClick(id) {
     let copy = [...playerAnswers];
 
@@ -29,14 +31,18 @@ export default function Question({questionId, question, subQuestion, answers, co
     return playerAnswerValues;
   }
 
+  function handleCSS(id) {
+    const isAnswerSelected = playerAnswers.find((i) => {
+      return i.qId === questionId;
+    });
+    const className = isAnswerSelected && isAnswerSelected.userAnswer === id ? "answer-button-selected" : "answer-button";
+    return className;
+  }
+
   function handleScore() {
     var score = 0;
     if (questionId === 5) {
       for (var i = 0; i < totalQ; i++) {
-        console.log(
-          finalPlayerAnswers()[i] == correctAnswers()[i],
-          "is it true"
-        );
         if (finalPlayerAnswers()[i] == correctAnswers()[i]) {
           score++;
         }
@@ -50,15 +56,13 @@ export default function Question({questionId, question, subQuestion, answers, co
     <div className="question">
       {!showResults ? (
         <section>
-        <p> Question {questionId} of {totalQ} </p>
+          <p> Question {questionId} of {totalQ} </p>
           <h3>Category: {question}</h3>
           {subQuestion}
           <div className="answers">
             {answers.map((item) => (
               <div key={item.id}>
-                <button className="answer-button" onClick={() => handleOnClick(item.id)}>
-                  {item.answer}
-                </button>
+                <button className={handleCSS(item.id)} onClick={() => handleOnClick(item.id)}> {item.answer} </button>
               </div>
             ))}
             {questionId === totalQ ? (

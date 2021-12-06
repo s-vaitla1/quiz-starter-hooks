@@ -19,6 +19,11 @@
     background-color: lightblue;
 }
 
-/* .answer-button:focus {
-    background-color: cyan;
-} */
+.answer-button-selected {
+    display: inline-block;
+    font-size: 15px;
+    height: 30px;
+    width: 70%;
+    margin: 10px;
+    background-color: lightblue;
+}
