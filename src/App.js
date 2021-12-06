@@ -1,6 +1,6 @@
 import './App.css';
 import questions from './api/multipleChoice.json';
-import Question from "./Question.jsx"
+import Question from "./Components/Question.jsx"
 import { useState } from "react";
 
 function App() {
